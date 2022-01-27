@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.test.model.OrderViewModel" />
+        <variable
+            name="typeFragment"
+            type="com.example.test.view.TypesFragment" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.TypesFragment">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/side_margin">
+
+                <RadioGroup
+                    android:id="@+id/flavor_options"
+                    android:layout_width="wrap_content"
+                    android:layout_height="500dp"
+                    android:orientation="vertical"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <RadioButton
+                        android:id="@+id/vanilla"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:checked="@{viewModel.type.equals(@string/ardino)}"
+                        android:onClick="@{() -> viewModel.setType(@string/ardino,1000.00)}"
+                        android:text="@string/ardino" />
+
+                    <RadioButton
+                        android:id="@+id/chocolate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:checked="@{viewModel.type.equals(@string/resberrypi)}"
+                        android:onClick="@{() -> viewModel.setType(@string/resberrypi,9560.00)}"
+                        android:text="@string/resberrypi" />
+
+                    <RadioButton
+                        android:id="@+id/red_velvet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:checked="@{viewModel.type.equals(@string/nodem)}"
+                        android:onClick="@{() -> viewModel.setType(@string/nodem,800.00)}"
+                        android:text="@string/nodem" />
+
+                    <RadioButton
+                        android:id="@+id/salted_caramel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:checked="@{viewModel.type.equals(@string/light_sensers)}"
+                        android:onClick="@{() -> viewModel.setType(@string/light_sensers,650.00)}"
+                        android:text="@string/light_sensers" />
+
+                    <RadioButton
+                        android:id="@+id/coffee"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:checked="@{viewModel.type.equals(@string/fire_sensers)}"
+                        android:onClick="@{() -> viewModel.setType(@string/fire_sensers,450.00)}"
+                        android:text="@string/fire_sensers" />
+                </RadioGroup>
+
+                <View
+                    android:id="@+id/divider"
+                    style="@style/Widget.Cupcake.Divider"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/side_margin"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/flavor_options" />
+
+                <EditText
+                    android:id="@+id/quantity"
+                    android:layout_width="212dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="3dp"
+                    android:hint="@string/hintq"
+                    app:layout_constraintBottom_toBottomOf="@+id/subtotal"
+                    app:layout_constraintEnd_toStartOf="@+id/subtotal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+                <TextView
+                    android:id="@+id/subtotal"
+                    style="@style/Widget.Cupcake.TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/side_margin"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider"
+                    tools:text="Subtotal $5.00" />
+
+                <Button
+                    android:id="@+id/next_button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/side_margin"
+                    android:text="@string/next"
+                    android:onClick="@{() ->typeFragment.goToNextScreen()}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/cancel_button"
+                    app:layout_constraintTop_toBottomOf="@id/subtotal" />
+
+                <Button
+                    android:id="@+id/cancel_button"
+                    android:layout_width="0dp"
+                    android:text="@string/cancel"
+                    android:onClick="@{() -> typeFragment.cancelOrder()}"
+                    android:layout_marginEnd="@dimen/side_margin"
+                    style="?attr/materialButtonOutlinedStyle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/next_button"
+                    app:layout_constraintTop_toTopOf="@+id/next_button"
+                    android:layout_height="wrap_content"/>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView"
+                    android:layout_width="200dp"
+                    android:layout_height="100dp"
+                    android:layout_marginEnd="16dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/arduino" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView2"
+                    android:layout_width="200dp"
+                    android:layout_height="100dp"
+                    android:layout_marginEnd="16dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cardView">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/res_pi" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView3"
+                    android:layout_width="200dp"
+                    android:layout_height="100dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="20dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cardView2">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/nodemcu" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView4"
+                    android:layout_width="200dp"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="16dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cardView3">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/light_senser" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="200dp"
+                    android:layout_height="100dp"
+                    app:cardElevation="20dp"
+                    app:cardCornerRadius="10dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cardView4">
+                    <ImageView
+
+                        android:src="@drawable/fire_senser"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"/>
+
+                </androidx.cardview.widget.CardView>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+    </FrameLayout>
+</layout>

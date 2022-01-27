@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Test</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="order_cupcakes">start ordering \n >>>IOT>>> \ncomponents</string>
+    <string name="one_cupcake">start your order</string>
+    <string name="ardino">ardino \n Rs.500.00 only</string>
+    <string name="resberrypi">resberipy \n Rs.9560.00 only</string>
+    <string name="nodem">Node MCU \n Rs.800.00 only</string>
+    <string name="light_sensers">light sensers \n Rs.650.00 only</string>
+    <string name="fire_sensers">fire sensers \n Rs.450.00 only</string>
+    <string name="next">NEXT</string>
+    <string name="send">SEND</string>
+    <string name="pickup_date">date</string>
+    <string name="tyype">type</string>
+    <string name="quantity">quantity</string>
+    <string name="main">IOT store</string>
+    <string name="choose">choose your material</string>
+    <string name="order_summery">order summary</string>
+    <string name="hintq">Enter the Quantity</string>
+    <string name="subtotal">Total : %s</string>
+    <string name="sub_total">subtotal: %s</string>
+    <string name="cancel">cancel</string>
+    <string name="new_iot_order">New item Order</string>
+    <string name="order_details">Quantity: %1$s item \n item name : %2$s \nPickUp date : %3$s \nTotal :%4$s \n\n Thank you!</string>
+
+    <plurals name="items">
+        <item quantity="one">%d iot components</item>
+        <item quantity="other">%d iot components</item>
+    </plurals>
+</resources>
